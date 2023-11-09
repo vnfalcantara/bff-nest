@@ -11,6 +11,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { ThrottlerConfig } from './config/throttler.config';
 import { RedisConfig } from './config/cache.config';
 import { RedisModule } from '@nestjs-modules/ioredis';
+import { environmentSchema } from 'environment/environmentSchema';
 
 const { NODE_ENV } = process.env;
 const prod = !NODE_ENV || NODE_ENV === 'production';
@@ -21,7 +22,7 @@ const prod = !NODE_ENV || NODE_ENV === 'production';
       envFilePath: !prod ? `./environment/${process.env.NODE_ENV}.env` : '',
       isGlobal: true,
       load: [environmentConfig],
-      // validationSchema: environmentSchema,
+      validationSchema: environmentSchema, // Não inicia a aplicação se não possuir todas as envs
     }),
 
     MongooseModule.forRootAsync({

@@ -35,14 +35,14 @@ $ yarn install
 ## Running the app
 
 ```bash
-# development
-$ yarn run start
+# local
+$ yarn run start:local
 
-# watch mode
-$ yarn run start:dev
+# local with homologation envs
+$ yarn run start:local-hml
 
-# production mode
-$ yarn run start:prod
+# local with production envs
+$ yarn run start:local-prd
 ```
 
 ## Test
